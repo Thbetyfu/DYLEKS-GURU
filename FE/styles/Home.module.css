@@ -1,0 +1,159 @@
+/*
+ * Home.module.css — Halaman Landing DyLeks
+ * Redesign: Warna hangat, tombol besar ramah anak, teks lebih terbaca
+ */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px 32px;
+  overflow: hidden;
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.centered {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  animation: fadeIn 0.5s ease-out both;
+  text-align: center;
+  width: 100%;
+  max-width: 760px;
+  margin: 80px auto 0;
+  padding: 36px 28px 40px;
+  border-radius: 28px;
+  /* Permukaan hangat, bukan glassmorphism berat */
+  background: var(--surface);
+  border: 1.5px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Maskot lebih besar dan dapat terlihat — anchor visual untuk anak */
+.mascotContainer {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 1.5rem;
+  animation: float 5s ease-in-out infinite;
+}
+
+.mascotContainer svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Judul besar dan hangat */
+.title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.01em;     /* Lebih mudah dibaca dari -0.03em */
+  color: var(--text-heading);
+  line-height: 1.2;
+}
+
+.highlight {
+  color: var(--primary);
+  /* Tidak ada text-shadow neon — membingungkan anak disleksia */
+}
+
+/* Subtitle dengan jarak baris yang proper untuk disleksia */
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  font-weight: 400;
+  max-width: 400px;
+  margin: 0 0 8px 0;
+  line-height: 1.75;           /* Standar BDA: min 1.5, ideal 1.75 */
+}
+
+/*
+ * Tombol utama: 52px min-height (melebihi standar 48dp Google Material),
+ * rounded 18px — tidak terlalu lancip, tidak terlalu bulat.
+ * Gradient hangat, bukan biru neon.
+ */
+.button {
+  width: 100%;
+  max-width: 360px;
+  min-height: 56px;            /* Lebih besar dari standar untuk jari anak */
+  margin: 16px auto 32px auto;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+  color: #ffffff;
+  border: none;
+  padding: 0 2rem;
+  border-radius: 18px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(45, 111, 168, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  flex-shrink: 0;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(45, 111, 168, 0.34);
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 12px rgba(45, 111, 168, 0.20);
+}
+
+/* Tombol sekunder: gaya tenang, tidak bersaing dengan CTA utama */
+.copilotButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 24px;
+  min-height: 52px;
+  border-radius: 16px;
+  background: var(--primary-light);
+  border: 1.5px solid var(--glass-border);
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.copilotButton:hover {
+  background: var(--primary);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(45, 111, 168, 0.25);
+}
+
+.iconRight {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

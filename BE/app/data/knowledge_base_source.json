@@ -1,0 +1,38 @@
+[
+  {
+    "id": "og-vakt-principles",
+    "category": "Orton-Gillingham",
+    "title": "Prinsip Utama Metode Multisensori Orton-Gillingham (VAKT)",
+    "content": "Metode Orton-Gillingham didasarkan pada pendekatan VAKT (Visual, Auditory, Kinesthetic, Tactile). Untuk mengajarkan hubungan huruf-bunyi (fonem-grafem), guru disarankan menggabungkan keempat sensori secara simultan. Visual: Siswa melihat huruf yang ditulis di papan tulis atau kartu. Auditory: Siswa mendengarkan bunyi huruf tersebut dan mengucapkan suaranya. Kinesthetic: Siswa menuliskan huruf di udara dengan gerakan lengan penuh (skywriting). Tactile: Siswa meraba bentuk huruf bertekstur kasar (menggunakan kertas pasir, baki pasir, atau clay). Integrasi multisensori ini memperkuat jalur saraf memori di otak anak disleksia yang sering mengalami hambatan jika hanya menggunakan visual saja."
+  },
+  {
+    "id": "reversal-bd-intervention",
+    "category": "Reversal b-d",
+    "title": "Intervensi untuk Mengatasi Pembalikan Huruf b dan d",
+    "content": "Pembalikan huruf b dan d sangat umum terjadi karena masalah orientasi spasial kiri-kanan. Untuk mengatasinya, gunakan asosiasi taktil-visual konkret. Asosiasi Pertama: 'Bed' (Tempat Tidur). Minta anak mengepalkan kedua tangan dengan ibu jari menghadap ke atas dan mempertemukan kepalannya membentuk kata 'bed' (tangan kiri membentuk 'b', tangan kanan membentuk 'd'). Lingkaran b di depan tiang, lingkaran d di belakang tiang. Asosiasi Kedua: Tulis huruf 'b' dimulai dari tiang atas ke bawah lalu buat lingkaran ('bat and ball' - pukul dulu baru ada bolanya). Tulis huruf 'd' dimulai dari membuat lingkaran (perut) dulu baru ditarik tiang tinggi ke bawah ('drum and drumstick' - buat drum dulu baru pukulannya). Latihan terarah dengan menelusuri bentuk fisik huruf di atas baki pasir akan merangsang memori motorik anak."
+  },
+  {
+    "id": "reversal-pq-intervention",
+    "category": "Reversal p-q",
+    "title": "Intervensi untuk Mengatasi Pembalikan Huruf p dan q",
+    "content": "Kesalahan pembalikan huruf p dan q sering membingungkan anak disleksia karena posisi ekor di bawah garis. Asosiasi Pertama: Gunakan gestur tangan kiri dan kanan menghadap ke bawah. Jari jempol tangan kiri ke bawah membentuk 'p', jari jempol tangan kanan ke bawah membentuk 'q'. Asosiasi Kedua: Tulis huruf 'p' dimulai dengan membuat tiang ke bawah lalu gambar lingkaran di atas kanan ('pensil dulu baru kertas gambar'). Tulis huruf 'q' dimulai dengan menggambar lingkaran lalu buat tiang ke bawah dengan lekukan kecil di bawahnya ('queen bermahkota'). Minta anak melatih perbedaan ini dengan memotong huruf dari karton berwarna-warni dan mencocokkannya ke pola berlubang."
+  },
+  {
+    "id": "omission-letters-spelling",
+    "category": "Omission (Penghilangan)",
+    "title": "Strategi Penanganan Huruf Hilang saat Menulis (Omissions)",
+    "content": "Penghilangan huruf (omission) terjadi karena anak kesulitan melakukan segmentasi fonemik (memisahkan bunyi kata secara detail). Strategi intervensi: Gunakan teknik 'Elkonin Boxes' (Kotak Bunyi) dan 'Finger Spelling' (Mengeja dengan Jari). Mintalah anak mendengarkan sebuah kata lambat-lambat (misalnya 'b-u-k-u'). Saat mengucapkan setiap fonem, anak menekan satu keping token (kancing atau kerikil) ke dalam kotak gambar di atas meja, atau melipat satu jari tangan untuk setiap bunyi. Proses visualisasi fisik bunyi ini melatih kesadaran fonologis anak agar tidak melewatkan huruf konsonan tengah atau vokal saat menuangkannya ke dalam tulisan kertas."
+  },
+  {
+    "id": "dysgraphia-motor-stiffness",
+    "category": "Disgrafia Motorik",
+    "title": "Mengurangi Ketegangan Motorik Halus saat Menulis",
+    "content": "Anak dengan hambatan disleksia dan disgrafia sering memegang alat tulis terlalu erat, menyebabkan kelelahan motorik halus dan tulisan yang tidak stabil. Intervensi: Sebelum sesi menulis, lakukan pemanasan motorik halus selama 2-3 menit (seperti meremas playdough, merobek kertas kecil, atau memainkan jemari). Gunakan alat bantu pegangan pensil (pencil grip) berbahan karet silikon yang memiliki lubang posisi jari untuk melatih genggaman tripod yang benar secara alami. Hindari memaksakan anak menulis paragraf panjang dalam satu waktu; gunakan pendekatan intervensi berbasis menulis kata tunggal secara bertahap dengan jarak istirahat teratur."
+  },
+  {
+    "id": "spaced-repetition-spelling",
+    "category": "Spaced Repetition",
+    "title": "Siklus Latihan Mengeja Menggunakan Spaced Repetition",
+    "content": "Metode pengulangan berjeda (spaced repetition) sangat penting untuk mentransfer ingatan fonem anak disleksia dari memori jangka pendek ke memori jangka panjang. Guru disarankan menerapkan siklus 1-3-7: Ajarkan kata baru hari ini (Hari 1), ulangi kembali kata tersebut lusa (Hari 3), dan uji kembali seminggu kemudian (Hari 7). Jika anak membuat kesalahan pada kata tertentu, turunkan kata tersebut kembali ke siklus harian. Gabungkan dengan flashcard multisensori berwarna agar visual anak terbiasa mengenali bentuk utuh kata (sight words) secara otomatis."
+  }
+]

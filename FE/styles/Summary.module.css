@@ -1,0 +1,120 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 96px 24px 44px;
+  text-align: center;
+  font-family: 'Lexend', 'Inter', system-ui, sans-serif;
+  max-width: 1120px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.headline {
+  color: var(--text-heading);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 20px;
+  animation: fadeInDown 0.6s ease-out both;
+  letter-spacing: 0.01em;        /* Positif untuk disleksia */
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mascotContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 18px 0 28px;
+}
+
+.duck {
+  width: 230px;
+  height: auto;
+  filter: drop-shadow(0 18px 26px rgba(31, 36, 48, 0.16));
+  animation: floatingDuck 3s infinite ease-in-out;
+}
+
+@keyframes floatingDuck {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(3deg); }
+}
+
+.subheadline {
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 400;              /* Tidak perlu bold untuk body text */
+  margin-top: 10px;
+  margin-bottom: 22px;
+  padding: 0 16px;
+  animation: fadeInUp 0.6s ease-out 0.3s both;
+  max-width: 520px;
+  line-height: 1.75;             /* Standar BDA untuk disleksia */
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+  max-width: 360px;
+}
+
+/* Tombol utama halaman Summary: 56px, warna primer tenang */
+.button {
+  width: 100%;
+  min-height: 56px;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 18px;
+  padding: 0 24px;
+  box-shadow: 0 6px 20px rgba(45, 111, 168, 0.28);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(45, 111, 168, 0.20);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  background: var(--primary-hover);
+  box-shadow: 0 10px 28px rgba(45, 111, 168, 0.34);
+}
+
+/* RESPONSIVE DESKTOP OVERRIDES */
+@media (min-width: 768px) {
+  .headline {
+    font-size: 2.8rem;
+  }
+  .subheadline {
+    font-size: 1.08rem;
+  }
+  .duck {
+    width: 280px;
+  }
+}

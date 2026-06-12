@@ -1,0 +1,13 @@
+{
+  "name": "dyleks-desktop",
+  "version": "1.0.0",
+  "description": "Desktop Launcher for DyLeks Local AI Platform",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^28.2.0"
+  }
+}

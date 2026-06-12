@@ -1,0 +1,250 @@
+.container {
+  min-height: 100vh;
+  padding: 40px 24px 56px;
+  font-family: 'Lexend', 'Inter', system-ui, sans-serif;
+  max-width: 1120px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 10;
+  background: var(--surface);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--glass-border);
+  padding: 16px 18px;
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+}
+
+/* Tombol back: 52x52px standar touch target anak */
+.backButton {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 16px;           /* Rounded square lebih mudah diklik */
+  border: 1.5px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  cursor: pointer;
+  box-shadow: var(--glass-shadow);
+  color: var(--text-main);
+  transition: all 0.2s ease;
+}
+
+.backButton:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateX(-2px);
+}
+
+.headerTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  flex: 1;
+  letter-spacing: 0.01em;        /* Positif untuk disleksia */
+  line-height: 1.3;
+}
+
+.statSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface);
+  padding: 18px 20px;
+  border-radius: 18px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.statLabel {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text-main);
+}
+
+.statValue {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-heading);
+  letter-spacing: 0.01em;        /* Positif untuk disleksia */
+  line-height: 1.4;
+}
+
+.detailSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.detailCard {
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--surface);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.2s;
+}
+
+.detailCard:hover {
+  transform: translateY(-2px);
+}
+
+.iconCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wordInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wordTarget {
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--text-main);
+}
+
+.wordAttempt {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.indicationBox {
+  background: var(--surface);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 48px;
+  box-shadow: var(--glass-shadow);
+}
+
+.indicationText {
+  font-size: 0.95rem;
+  line-height: 1.75;             /* Standar BDA untuk disleksia */
+  color: var(--text-main);
+  font-weight: 400;
+}
+
+.recommendationList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.recommendationCard {
+  border: 1.5px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 20px 24px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text-main);
+  line-height: 1.75;             /* Standar disleksia */
+  background: var(--surface);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Kotak disclaimer: menggunakan token warning yang hangat */
+.disclaimerBox {
+  background: var(--warning-light);
+  border: 1.5px solid rgba(201, 123, 0, 0.25);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.disclaimerText {
+  font-size: 0.88rem;
+  line-height: 1.75;             /* Standar disleksia */
+  color: var(--text-heading);
+  font-weight: 400;
+}
+
+/* Tombol utama: 56px, menggunakan token primary yang sudah di-update */
+.closeButton {
+  width: 100%;
+  min-height: 56px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 18px;
+  padding: 0 24px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(45, 111, 168, 0.28);
+  margin-bottom: 40px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.closeButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 8px rgba(45, 111, 168, 0.20);
+}
+
+.closeButton:hover {
+  transform: translateY(-2px);
+  background: var(--primary-hover);
+  box-shadow: 0 10px 28px rgba(45, 111, 168, 0.34);
+}
+
+/* RESPONSIVE GRID FOR DESKTOP */
+@media (min-width: 768px) {
+  .statSection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+  }
+  
+  .detailSection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .recommendationList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}

@@ -1,0 +1,1126 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-main);
+  color: var(--text-main);
+  position: relative;
+  overflow-x: hidden;
+  /* Gunakan Lexend — font klinis untuk disleksia */
+  font-family: 'Lexend', 'Inter', system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Wrapper untuk desktop centering */
+.centeredWrapper {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg-main);
+  box-shadow: 0 0 40px rgba(60, 30, 10, 0.06);
+  position: relative;
+}
+
+.topSection {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 20px 24px 80px 24px;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  margin-top: 20px;
+}
+
+.avatar {
+  width: 68px;
+  height: 68px;
+  background-color: var(--card-bg-2, #ffffff);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.mascotWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.6); /* Scale down the mascot inside the circle */
+}
+
+.greetingInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.greetingTitle {
+  font-size: 24px;
+  color: var(--text-main);
+  font-weight: bold;
+  margin: 0;
+}
+
+.levelBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.starIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.levelText {
+  font-size: 16px;
+  color: var(--text-main);
+  font-weight: bold;
+}
+
+.progressCard {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow: var(--glass-shadow);
+  margin-top: 0;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 20;
+}
+
+.progressTitle {
+  font-size: 18px;
+  color: var(--text-main, #000000);
+  font-weight: 800;
+  margin: 0;
+}
+
+.progressActionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -4px;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 8px;
+  background: var(--track-bg, #F0F2F5);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--btn-primary, #7D57C1);
+  border-radius: 100px;
+}
+
+.progressSubtitle {
+  font-size: 14px;
+  color: var(--btn-primary, #7D57C1);
+  margin: 0;
+  font-weight: 700;
+}
+
+.percentText {
+  font-weight: 800;
+  font-size: 16px;
+  margin-right: 2px;
+}
+
+.lanjutButton {
+  background: var(--btn-primary, #7D57C1);
+  border: none;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 14px;
+  padding: 8px 32px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lanjutButton:active {
+  transform: scale(0.98);
+}
+
+.bottomSection {
+  flex: 1;
+  background: transparent;
+  padding: 8px 24px 60px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.tipCard {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 32px;
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-smooth, all 0.3s ease);
+}
+
+.tipMascot {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tipText {
+  color: var(--text-main);
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 600;
+}
+
+.tipText strong {
+  font-weight: 800;
+  color: #FFD983;
+}
+
+.exerciseListContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  font-size: 19px;
+  color: var(--text-main, #333333);
+  font-weight: 800;
+  margin: 0;
+  margin-bottom: 4px;
+}
+
+.exerciseCard {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 20px 16px;
+  transition: var(--transition-smooth, all 0.3s ease);
+  cursor: pointer;
+  box-shadow: var(--glass-shadow);
+}
+
+.exerciseCard:active {
+  border-color: var(--btn-primary, #7D57C1);
+}
+
+.exerciseText {
+  font-size: 17px;
+  color: var(--text-main, #333333);
+  font-weight: 800;
+}
+
+/* Quiz Styles */
+.quizContainer {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: transparent;
+  min-height: 100vh;
+  padding-bottom: 120px; /* Space for feedback banner */
+}
+
+.quizHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.levelTextQuiz {
+  color: var(--btn-primary, #7D57C1);
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quizTitle {
+  color: var(--btn-primary, #7D57C1);
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.tahapText {
+  color: var(--text-secondary, #333333);
+  font-size: 16px;
+  font-weight: 800;
+  margin-top: 12px;
+}
+
+.quizProgressTrack {
+  width: 100%;
+  height: 10px;
+  background: var(--track-bg, #F0F2F5);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.quizProgressFill {
+  height: 100%;
+  background: var(--btn-primary, #7D57C1);
+  border-radius: 100px;
+  transition: width 0.3s ease;
+}
+
+.latihanLabel {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-main, #000000);
+  margin-top: 16px;
+}
+
+.questionCard {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  padding: 60px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  text-align: center;
+  color: var(--text-main);
+  box-shadow: var(--glass-shadow);
+}
+
+.questionText {
+  font-size: 42px;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.speakerBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 100px;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+.speakerBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.instructionText {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--text-main, #000000);
+  margin-top: 16px;
+}
+
+.optionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+/*
+ * Tombol pilihan: min-height 72px (standar 52px + extra untuk nyaman di HP anak).
+ * Warna default hangat, bukan glassmorphism dingin.
+ */
+.optionButton {
+  min-height: 72px;
+  background: var(--bg-surface);
+  border: 2px solid var(--glass-border);
+  border-radius: 18px;
+  color: var(--text-heading);
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  transition: all 0.2s ease;
+  box-shadow: var(--glass-shadow);
+  word-break: break-word;
+  text-align: center;
+}
+
+.optionButton:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.optionButton:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+/*
+ * Jawaban BENAR: hijau sage mellow — bukan hijau neon yang memicu overstimulasi.
+ * Hijau sage (#E8F5EE background, #2E7D52 border) terasa "aman" dan positif.
+ */
+.optionButtonSelected {
+  background: var(--success-light) !important;
+  border-color: var(--color-success) !important;
+  color: var(--color-success) !important;
+  box-shadow: 0 4px 0 rgba(46, 125, 82, 0.25) !important;
+}
+
+.optionButtonSelected:active {
+  box-shadow: 0 1px 0 rgba(46, 125, 82, 0.25) !important;
+}
+
+/*
+ * Jawaban SALAH: oranye bata hangat — bukan merah alarm yang memicu stres.
+ * Oranye (#FDECEA background, #B54236 border) lebih "gentle" untuk anak disleksia.
+ * Disertai teks growth mindset: "Hampir! Coba lagi."
+ */
+.optionButtonWrong {
+  background: var(--error-light) !important;
+  border-color: var(--color-danger) !important;
+  color: var(--color-danger) !important;
+  box-shadow: 0 4px 0 rgba(181, 66, 54, 0.20) !important;
+}
+
+.optionButtonWrong:active {
+  box-shadow: 0 1px 0 rgba(181, 66, 54, 0.20) !important;
+}
+
+/*
+ * Banner feedback: warna hangat dan teks growth mindset.
+ * Sukses: hijau sage. Salah: oranye hangat (BUKAN merah).
+ * Riset: feedback merah cerah meningkatkan kecemasan anak neurodivergent.
+ */
+.feedbackBanner {
+  margin-top: 20px;
+  background: var(--success-light);
+  border: 1.5px solid var(--color-success);
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 4px 16px rgba(46, 125, 82, 0.10);
+  animation: feedbackSlideUp 0.3s ease both;
+}
+
+@keyframes feedbackSlideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Salah: oranye hangat, bukan merah alarm */
+.feedbackBannerWrong {
+  background: var(--error-light) !important;
+  border-color: var(--color-danger) !important;
+  box-shadow: 0 4px 16px rgba(181, 66, 54, 0.10) !important;
+}
+
+.feedbackHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-success);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.feedbackHeaderWrong {
+  color: var(--color-danger) !important;
+}
+
+/* Teks feedback: growth mindset — "Hampir!" bukan "Salah!" */
+.feedbackText {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin: 0;
+  line-height: 1.75;
+}
+
+/*
+ * Tombol Lanjut di bawah feedback: 56px, warna primer tenang.
+ * Sama untuk benar/salah — konsistensi membantu anak disleksia.
+ */
+.nextButton {
+  background: var(--color-success);
+  border: none;
+  color: #ffffff;
+  padding: 0 18px;
+  min-height: 56px;
+  border-radius: 18px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(46, 125, 82, 0.28);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Salah: tombol tetap netral (primer biru) — jangan pertegas warna merah */
+.nextButtonWrong {
+  background: var(--primary) !important;
+  box-shadow: 0 4px 14px rgba(45, 111, 168, 0.25) !important;
+}
+
+.nextButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 6px rgba(46, 125, 82, 0.20);
+}
+
+.nextButtonWrong:active {
+  box-shadow: 0 2px 6px rgba(45, 111, 168, 0.18) !important;
+}
+
+/* Learning View Styles */
+.learningLabel {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-main, #000000);
+  margin-top: 10px;
+}
+
+.learningCard {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  padding: 60px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+  color: var(--text-main);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+}
+
+.arrowCircle {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bigLetter {
+  font-size: 120px;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1;
+}
+
+.subText {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.learningFooter {
+  margin-top: auto;
+  padding-bottom: 40px;
+}
+
+/* Tombol navigasi utama — biru tua tenang menggantikan ungu */
+.nextButtonPurple {
+  background: var(--primary);
+  border: none;
+  color: #ffffff;
+  padding: 0 18px;
+  min-height: 56px;
+  border-radius: 18px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(45, 111, 168, 0.28);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.nextButtonPurple:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.nextButtonPurple:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 6px rgba(45, 111, 168, 0.20);
+}
+
+.themeToggleWrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.themeToggleLanding {
+  position: relative;
+  top: auto;
+  right: auto;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin: 24px 24px 0;
+}
+
+.pageBackdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.backdropOrbOne,
+.backdropOrbTwo,
+.backdropOrbThree {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(24px);
+  opacity: 0.75;
+}
+
+.backdropOrbOne {
+  width: 220px;
+  height: 220px;
+  top: -40px;
+  left: -50px;
+  background: rgba(88, 204, 2, 0.18);
+}
+
+.backdropOrbTwo {
+  width: 180px;
+  height: 180px;
+  top: 160px;
+  right: -40px;
+  background: rgba(255, 159, 67, 0.18);
+}
+
+.backdropOrbThree {
+  width: 260px;
+  height: 260px;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(125, 87, 193, 0.12);
+}
+
+.landingHero {
+  margin: 80px 24px 0;
+  padding: 24px;
+  border-radius: 32px;
+  background: var(--surface-strong);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.heroGlow {
+  position: absolute;
+  inset: auto -30px -50px auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 156, 107, 0.15) 0%, rgba(255, 156, 107, 0) 70%);
+  pointer-events: none;
+}
+
+.heroTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--track-bg);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.heroMascotBubble {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--glass-shadow);
+  transition: background 0.3s ease;
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.heroEyebrow {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* Judul hero: letter-spacing positif agar tidak menempel (standar disleksia) */
+.heroTitle {
+  margin: 0;
+  color: var(--text-heading);
+  font-size: clamp(26px, 5vw, 38px);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.01em;   /* Positif — bukan negatif yang mempersulit baca */
+  transition: color 0.3s ease;
+}
+
+.heroSubtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.75;         /* Standar BDA: 1.75 untuk body text */
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.heroChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.heroChip,
+.progressBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--track-bg);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 800;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.heroActions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.heroPrimaryButton,
+.heroSecondaryButton {
+  border: none;
+  border-radius: 18px;
+  padding: 0 18px;
+  min-height: 56px;            /* Touch target 56px untuk jari anak */
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Primer: gradient hangat oranye-biru, bukan biru neon */
+.heroPrimaryButton {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+  box-shadow: 0 6px 20px rgba(45, 111, 168, 0.28);
+}
+
+.heroSecondaryButton {
+  color: var(--text-main);
+  background: var(--bg-card);
+  border: 1.5px solid var(--glass-border);
+}
+
+.heroSecondaryButton:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.heroPrimaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(45, 111, 168, 0.34);
+}
+
+.heroSecondaryButton:hover {
+  transform: translateY(-2px);
+}
+
+.heroPrimaryButton:active,
+.heroSecondaryButton:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.sectionHeader,
+.sectionHeaderStandalone {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sectionHeaderStandalone {
+  flex-direction: column;
+  margin-top: 8px;
+  gap: 4px;
+}
+
+.sectionSubtitle {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.featureCard {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.featureCardAccent {
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(255, 159, 67, 0.16) 0%, rgba(125, 87, 193, 0.14) 100%);
+}
+
+.featureIconWrap {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featureText {
+  flex: 1;
+  min-width: 0;
+}
+
+.featureTitle {
+  margin: 0 0 6px 0;
+  color: var(--text-main);
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.featureDesc {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.featureArrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--btn-primary, #7D57C1);
+  flex-shrink: 0;
+}
+
+.exerciseHint {
+  display: block;
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (min-width: 720px) {
+  .heroActions {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+
+  .featureGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Telemetry Widget Styles */
+.telemetryCard {
+  background: var(--surface-strong);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.telemetryHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Status light: hijau sage untuk normal, amber untuk perhatian (bukan merah alarm) */
+.telemetryStatusLight {
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-success);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-success);
+  animation: pulseGreen 2s infinite alternate;
+  flex-shrink: 0;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Status danger: amber hangat, bukan merah alarm yang memicu stres */
+.telemetryStatusDanger {
+  background-color: var(--color-warning) !important;
+  box-shadow: 0 0 10px var(--color-warning) !important;
+  animation: pulseDanger 1.2s infinite alternate !important;
+}
+
+@keyframes pulseGreen {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+@keyframes pulseDanger {
+  0% { opacity: 0.5; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1.15); }
+}
+
+.telemetryTitle {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.telemetryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  border-top: 1px dashed var(--glass-border);
+  padding-top: 10px;
+}
+
+.telemetryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.telemetryLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.telemetryValue {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.telemetryDanger {
+  color: var(--color-danger) !important;
+}
+
+.telemetryActive {
+  color: var(--color-success) !important;
+  font-weight: 700;
+}
+
+/* DDS Banner — varian berdasarkan jenis aksi */
+/* DDS Banner: menggunakan token warna global yang sudah di-update */
+.ddsBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.75;              /* Standar disleksia */
+  animation: slideIn 0.3s ease;
+  text-align: left;
+  background: var(--primary-light);
+  border-left: 4px solid var(--primary);
+  color: var(--text-main);
+}
+
+/* Oranye hangat: DDS reduce_options */
+.ddsBannerReduce {
+  background: var(--warning-light) !important;
+  border-left-color: var(--color-warning) !important;
+}
+
+/* Biru tenang: DDS play_audio_hint */
+.ddsBannerAudio {
+  background: var(--primary-light) !important;
+  border-left-color: var(--primary) !important;
+}
+
+.ddsBannerIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: var(--primary);
+  margin-top: 2px;
+}
+
+.ddsBannerReduce .ddsBannerIcon {
+  color: var(--color-warning);
+}
+
+.ddsBannerAudio .ddsBannerIcon {
+  color: var(--primary);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
