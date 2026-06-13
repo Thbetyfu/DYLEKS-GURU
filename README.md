@@ -46,6 +46,9 @@ sequenceDiagram
     *   Mengurangi beban administrasi guru dengan sistem scan QR Code sekali pakai untuk pendaftaran profil siswa.
 3.  **AI Copilot (Orton-Gillingham Intervention):**
     *   Sistem RAG (Retrieval-Augmented Generation) luring memanfaatkan LLM lokal untuk menghasilkan rekomendasi teknik mengajar multi-sensori Orton-Gillingham berdasarkan data riwayat kesalahan spesifik siswa.
+4.  **Optimalisasi Dasbor & Deteksi Real-Time:**
+    *   Tampilan indikator status koneksi siswa secara real-time (glowing green dot) berdasarkan data `last_seen` dari ping heartbeat siswa.
+    *   Panel Widget "Feed Aktivitas Kelas Luring" untuk memantau pendaftaran siswa baru, penyelesaian skrining, dan sesi latihan siswa secara live menggunakan auto-polling interval 4 detik.
 
 ---
 
