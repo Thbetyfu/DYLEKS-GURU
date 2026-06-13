@@ -629,3 +629,122 @@ def get_child_learning_sessions(
     return results
 
 
+@router.post("/heartbeat")
+def student_heartbeat(
+    child_id: str,
+    db: Session = Depends(get_db)
+):
+    """
+    Heartbeat ping from student device to update last_seen online status.
+    """
+    child = db.query(ChildProfile).filter(ChildProfile.id == child_id).first()
+    if not child:
+        raise HTTPException(status_code=404, detail="Profil siswa tidak ditemukan.")
+    child.last_seen = datetime.utcnow()
+    db.commit()
+    return {"status": "success", "last_seen": child.last_seen}
+
+
+@router.get("/dashboard-feed")
+def get_dashboard_feed(
+    db: Session = Depends(get_db),
+    current_teacher: User = Depends(get_current_teacher)
+):
+    """
+    Mendapatkan feed aktivitas terbaru (10 item teratas) untuk guru yang sedang login.
+    Aktivitas mencakup: Sesi Skrining baru, Sesi Latihan selesai, atau pendaftaran QR.
+    """
+    from app.models.screening_session import ScreeningSession
+    from app.models.exercise import LearningSession
+
+    # 1. Ambil pendaftaran siswa yang terhubung dalam 24 jam terakhir
+    # Mengambil relasi langsung via ChildProfile
+    children = db.query(ChildProfile).filter(ChildProfile.teacher_id == current_teacher.id).all()
+    child_ids = [c.id for c in children]
+    child_names = {c.id: c.name for c in children}
+
+    feed = []
+
+    # Registrasi Siswa Baru
+    for child in children:
+        feed.append({
+            "id": f"reg-{child.id}",
+            "child_name": child.name,
+            "type": "registration",
+            "message": f"terdaftar sebagai siswa baru di kelas luring.",
+            "timestamp": child.created_at,
+            "detail": f"Level Mulai: {child.current_level}"
+        })
+
+    # 2. Ambil sesi skrining terbaru
+    screenings = (
+        db.query(ScreeningSession)
+        .filter(ScreeningSession.child_id.in_(child_ids))
+        .order_by(ScreeningSession.created_at.desc())
+        .limit(10)
+        .all()
+    )
+    for s in screenings:
+        feed.append({
+            "id": f"scr-{s.id}",
+            "child_name": child_names.get(s.child_id, "Siswa"),
+            "type": "screening",
+            "message": f"menyelesaikan skrining disleksia tulis tangan.",
+            "timestamp": s.created_at,
+            "detail": f"Risiko: {s.risk_score:.1f}% ({s.risk_level})"
+        })
+
+    # 3. Ambil sesi latihan terbaru
+    sessions = (
+        db.query(LearningSession)
+        .filter(LearningSession.child_id.in_(child_ids))
+        .order_by(LearningSession.start_time.desc())
+        .limit(10)
+        .all()
+    )
+    for s in sessions:
+        if s.end_time:
+            # Hitung akurasi latihan
+            correct_count = sum(1 for r in s.responses if r.is_correct)
+            total_count = len(s.responses)
+            accuracy = (correct_count / total_count * 100) if total_count > 0 else 0
+            
+            feed.append({
+                "id": f"lrn-{s.id}",
+                "child_name": child_names.get(s.child_id, "Siswa"),
+                "type": "exercise",
+                "message": f"selesai sesi latihan luring.",
+                "timestamp": s.end_time,
+                "detail": f"Akurasi: {accuracy:.0f}% ({correct_count}/{total_count} Benar)"
+            })
+        else:
+            # Sedang aktif mengerjakan jika start_time dalam 5 menit terakhir
+            is_active = (datetime.utcnow() - s.start_time).total_seconds() < 300
+            if is_active:
+                feed.append({
+                    "id": f"lrn-active-{s.id}",
+                    "child_name": child_names.get(s.child_id, "Siswa"),
+                    "type": "exercise_active",
+                    "message": f"sedang aktif mengerjakan latihan luring...",
+                    "timestamp": s.start_time,
+                    "detail": "Menunggu respon"
+                })
+
+    # Sort secara desc berdasarkan timestamp
+    feed.sort(key=lambda x: x["timestamp"], reverse=True)
+    
+    # Ambil 10 teratas
+    result_feed = []
+    for item in feed[:10]:
+        result_feed.append({
+            "id": item["id"],
+            "child_name": item["child_name"],
+            "type": item["type"],
+            "message": item["message"],
+            "timestamp": item["timestamp"].isoformat() if item["timestamp"] else None,
+            "detail": item["detail"]
+        })
+
+    return result_feed
+
+

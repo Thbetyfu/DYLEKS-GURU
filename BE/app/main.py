@@ -15,6 +15,20 @@ from app.models import user, child_profile, exercise, screening_session, qr_toke
 # (termasuk tabel 'users' yang baru ditambahkan)
 Base.metadata.create_all(bind=engine)
 
+# Self-healing: Tambahkan kolom last_seen ke child_profiles jika belum ada (SQLite WAL compatibility)
+from sqlalchemy import text
+with engine.connect() as conn:
+    try:
+        res = conn.execute(text("PRAGMA table_info(child_profiles);")).fetchall()
+        columns = [r[1] for r in res]
+        if "last_seen" not in columns:
+            print("[Database] Menambahkan kolom 'last_seen' ke tabel 'child_profiles'...")
+            conn.execute(text("ALTER TABLE child_profiles ADD COLUMN last_seen DATETIME;"))
+            conn.commit()
+            print("[Database] Kolom 'last_seen' berhasil ditambahkan secara aman.")
+    except Exception as e:
+        print(f"[Database Error] Gagal memeriksa/menambahkan kolom 'last_seen': {e}")
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Jalankan Hardware Diagnostic sebelum memuat OCR engine

@@ -48,6 +48,7 @@ export default function Dashboard() {
   const [connectedStudentName, setConnectedStudentName] = useState<string | null>(null);
   const [qrLoading, setQrLoading] = useState(false);
   const [selectedQrChildId, setSelectedQrChildId] = useState<string | null>(null);
+  const [dashboardFeed, setDashboardFeed] = useState<any[]>([]);
 
   // Edit Note States
   const [editingNotes, setEditingNotes] = useState('');
@@ -105,13 +106,48 @@ export default function Dashboard() {
     }
   };
 
+  const isOnline = (lastSeenStr: string | null) => {
+    if (!lastSeenStr) return false;
+    const lastSeen = new Date(lastSeenStr);
+    const now = new Date();
+    return (now.getTime() - lastSeen.getTime()) < 15000;
+  };
+
+  const fetchDashboardFeed = async (token: string) => {
+    try {
+      const apiBase = localStorage.getItem('api_base_url') || 'http://localhost:3006';
+      const res = await fetch(`${apiBase}/api/v1/auth/dashboard-feed`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setDashboardFeed(data);
+      }
+    } catch (err) {
+      console.error('Gagal mengambil dashboard feed:', err);
+    }
+  };
+
   useEffect(() => {
     const token = localStorage.getItem('teacher_token');
     if (token) {
       setTeacherToken(token);
-      fetchChildren(token);
     }
   }, []);
+
+  useEffect(() => {
+    if (!teacherToken) return;
+
+    fetchChildren(teacherToken);
+    fetchDashboardFeed(teacherToken);
+
+    const interval = setInterval(() => {
+      fetchChildren(teacherToken);
+      fetchDashboardFeed(teacherToken);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [teacherToken]);
 
   // Login Guru
   const handleLogin = async (e: React.FormEvent) => {
@@ -560,6 +596,66 @@ export default function Dashboard() {
               </div>
             </div>
 
+            {/* Feed Aktivitas Luring */}
+            {teacherToken && (
+              <div style={{
+                background: theme === 'dark' ? 'rgba(255,255,255,0.05)' : '#ffffff',
+                padding: '24px 30px',
+                borderRadius: '24px',
+                border: theme === 'dark' ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.08)',
+                boxShadow: theme === 'dark' ? 'none' : '0 10px 30px rgba(0,0,0,0.03)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '12px'
+              }}>
+                <h2 style={{ fontSize: '18px', fontWeight: 'bold', margin: 0, color: theme === 'dark' ? '#ffffff' : '#1a202c', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ animation: 'gentleBreath 2s infinite', display: 'inline-block' }}>📡</span> Feed Aktivitas Kelas Luring (Real-Time)
+                </h2>
+                {dashboardFeed.length === 0 ? (
+                  <p style={{ color: 'gray', fontSize: '14px', margin: 0 }}>Belum ada aktivitas baru dari siswa.</p>
+                ) : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '160px', overflowY: 'auto', paddingRight: '8px' }}>
+                    {dashboardFeed.map((item) => {
+                      const timeStr = new Date(item.timestamp).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                      let icon = "📝";
+                      let color = "#3182ce";
+                      if (item.type === "registration") {
+                        icon = "🎉";
+                        color = "#48bb78";
+                      } else if (item.type === "screening") {
+                        icon = "🔍";
+                        color = "#e53e3e";
+                      } else if (item.type === "exercise_active") {
+                        icon = "⚡";
+                        color = "#dd6b20";
+                      }
+                      
+                      return (
+                        <div key={item.id} style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          padding: '10px 16px',
+                          background: theme === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.01)',
+                          borderLeft: `4px solid ${color}`,
+                          borderRadius: '8px',
+                          fontSize: '13px'
+                        }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <span style={{ fontSize: '16px' }}>{icon}</span>
+                            <span style={{ color: theme === 'dark' ? '#ffffff' : '#1a202c' }}>
+                              <strong>{item.child_name}</strong> {item.message} <span style={{ color: 'gray', fontSize: '12px' }}>({item.detail})</span>
+                            </span>
+                          </div>
+                          <span style={{ color: 'gray', fontSize: '11px', fontWeight: '500' }}>{timeStr}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* Layout Grid: List Siswa + Panel Detail (Side-by-Side jika ada anak yang dipilih) */}
             <div style={{ display: 'grid', gridTemplateColumns: selectedChild ? '2fr 1.3fr' : '1fr', gap: '30px', transition: 'all 0.3s ease' }}>
               
@@ -619,7 +715,18 @@ export default function Dashboard() {
                               }
                             }}
                           >
-                            <td style={{ padding: '16px 12px', fontWeight: 'bold', color: theme === 'dark' ? '#ffffff' : '#1a202c' }}>{child.name}</td>
+                            <td style={{ padding: '16px 12px', fontWeight: 'bold', color: theme === 'dark' ? '#ffffff' : '#1a202c', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                              <span style={{
+                                width: '10px',
+                                height: '10px',
+                                borderRadius: '50%',
+                                display: 'inline-block',
+                                background: isOnline(child.last_seen) ? '#48bb78' : '#cbd5e0',
+                                boxShadow: isOnline(child.last_seen) ? '0 0 8px #48bb78' : 'none',
+                                transition: 'all 0.3s ease'
+                              }}></span>
+                              {child.name}
+                            </td>
                             <td style={{ padding: '16px 12px', color: theme === 'dark' ? '#ffffff' : '#4a5568' }}>{child.grade || '-'}</td>
                             <td style={{ padding: '16px 12px' }}>
                               <span style={{ background: theme === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)', padding: '4px 10px', borderRadius: '8px', fontSize: '12px', color: theme === 'dark' ? '#ffffff' : '#1a202c' }}>Level {child.current_level}</span>

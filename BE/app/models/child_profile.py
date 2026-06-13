@@ -80,6 +80,7 @@ class ChildProfile(Base):
     current_level = Column(Integer, default=1)       # Level saat ini (1-5)
     risk_score = Column(Float, default=0.0)          # Skor risiko terakhir (0-100)
     risk_level = Column(String(20), default="Belum Dianalisis")  # Rendah/Sedang/Tinggi
+    last_seen = Column(DateTime, nullable=True)     # Timestamp keaktifan terakhir siswa luring
 
     # Catatan Pedagogi (opsional dari guru)
     teacher_notes = Column(EncryptedText, nullable=True)

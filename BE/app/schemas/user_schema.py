@@ -60,6 +60,7 @@ class ChildProfileResponse(BaseModel):
     risk_score: float
     risk_level: str
     teacher_notes: Optional[str]
+    last_seen: Optional[datetime] = None
     created_at: datetime
 
     model_config = {"from_attributes": True}
